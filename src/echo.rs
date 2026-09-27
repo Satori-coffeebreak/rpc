@@ -20,7 +20,7 @@ pub fn echo() -> Result<()> {
     let args = Args::parse();
 
     let handle = io::stdout().lock();
-    let mut buf = BufWriter::with_capacity(64 * 1024, handle);
+    let mut buf = BufWriter::with_capacity(crate::DEFAULT_BUFFER_SIZE, handle);
 
     for s in args.strings {
         write!(buf, "{} ", s).context(error_messages[0])?;
