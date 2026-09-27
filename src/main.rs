@@ -3,8 +3,6 @@ mod echo;
 use anyhow::{Result, bail};
 use std::{env, path::Path};
 
-use crate::echo::echo;
-
 fn main() -> Result<()> {
     let cmd_path = env::args().next().unwrap();
 
@@ -14,7 +12,7 @@ fn main() -> Result<()> {
         .unwrap();
 
     match cmd {
-        "echo" => echo(),
+        "echo" => echo::echo(),
         _ => bail!("存在しないコマンドです。"),
     }
 }
