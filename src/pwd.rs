@@ -1,6 +1,6 @@
 use anyhow::{Context, Result, bail};
 use clap::{Parser, ArgGroup};
-use std::{env, io::{self, BufWriter, Write}};
+use std::{env, fs, io::{self, BufWriter, Write}, path::{self, Path}};
 
 #[derive(Parser, Debug)]
 #[command(
@@ -23,13 +23,22 @@ struct Args {
 pub fn main() -> Result<()> {
     let args = Args::parse();
 
-    match env::var("PWD") {
-        Ok(val) => {
-            println!("{}", val);
-            Ok(())
-        },
-        Err(e) => {
-            bail!("PWD変数が設定されていません: {}", e);
+    if args.physical {
+        match env::current_dir() {
+            Ok(pwd) => {
+                println!("{}", pwd.to_str().unwrap());
+                Ok(())
+            },
+            Err(e) => bail!("作業ディレクトリの取得に失敗しました: {}", e),
+        }
+    }
+    else {
+        match env::var("PWD") {
+            Ok(pwd) => {
+                println!("{}", pwd);
+                Ok(())
+            },
+            Err(e) => bail!("作業ディレクトリの取得に失敗しました: {}", e),
         }
     }
 }
