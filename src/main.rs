@@ -1,4 +1,5 @@
 mod echo;
+mod pwd;
 
 use anyhow::{Result, bail};
 use std::{env, path::Path};
