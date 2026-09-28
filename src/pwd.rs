@@ -25,6 +25,7 @@ pub fn main() -> Result<()> {
     let args = Args::parse();
 
     if args.physical {
+        // 若干重い処理。いつか最適化する
         match env::current_dir() {
             Ok(pwd) => {
                 println!("{}", pwd.to_str().unwrap());
