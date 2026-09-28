@@ -4,6 +4,7 @@ use std::io::{self, BufWriter, Write};
 
 #[derive(Parser, Debug)]
 #[command(
+    name = "echo",
     version = "1.0.0",
     about = "引数に渡された文字列を全て半角スペースで区切って出力する。 "
 )]
