@@ -12,22 +12,17 @@ struct Args {
 }
 
 pub fn main() -> Result<()> {
-    let err_msg = [
-        "バッファの書き込みに失敗しました。",
-        "標準入力のフラッシュ失敗しました。",
-    ];
-
     let args = Args::parse();
 
     let handle = io::stdout().lock();
     let mut buf = BufWriter::with_capacity(crate::DEFAULT_BUFFER_SIZE, handle);
 
     for s in args.strings {
-        write!(buf, "{} ", s).context(err_msg[0])?;
+        write!(buf, "{} ", s).context("バッファの書き込みに失敗しました。")?;
     }
-    write!(buf, "\n").context(err_msg[0])?;
+    write!(buf, "\n").context("バッファの書き込みに失敗しました。")?;
 
-    buf.flush().context(err_msg[1])?;
+    buf.flush().context("標準入力のフラッシュ失敗しました。")?;
 
     Ok(())
 }
