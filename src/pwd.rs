@@ -3,7 +3,11 @@ use clap::{ArgGroup, Parser};
 use std::env;
 
 #[derive(Parser, Debug)]
-#[command(version = "1.0.0", about = "現在の作業ディレクトリのパスを返す。")]
+#[command(
+    name = "pwd",
+    version = "1.0.0",
+    about = "現在の作業ディレクトリのパスを返す。"
+)]
 #[command(group(
     ArgGroup::new("ag")
         .required(false)
