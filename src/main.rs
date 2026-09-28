@@ -17,7 +17,7 @@ fn main() -> Result<()> {
 
     match cmd {
         "echo" => echo::main(),
-        "pwd"  => pwd::main(),
+        "pwd" => pwd::main(),
         _ => bail!("存在しないコマンドです。"),
     }
 }
