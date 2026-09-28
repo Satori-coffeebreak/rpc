@@ -15,7 +15,7 @@ fn main() -> Result<()> {
         .unwrap();
 
     match cmd {
-        "echo" => echo::echo(),
+        "echo" => echo::main(),
         _ => bail!("存在しないコマンドです。"),
     }
 }
