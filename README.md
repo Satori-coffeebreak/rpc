@@ -6,9 +6,9 @@
 
 ## 実装済みのコマンド
 - echo
+- pwd
 
 ## 近いうちに実装予定のコマンド
-- pwd
 - mkdir
 - touch
 - cp
